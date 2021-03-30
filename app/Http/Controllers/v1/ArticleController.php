@@ -24,18 +24,9 @@ class ArticleController extends BaseController
         $this->repository2 = $repository2;
         $this->repository3 = $repository3;
     }
-
+    
     /**
-     * Paging
-     */
-    public function paging(
-        Request $request
-    ) {
-        dd('paging');
-    }
-
-    /**
-     * Get by id
+     * Get by exact id 
      */
     public function getById(
         Request $request,
@@ -43,7 +34,6 @@ class ArticleController extends BaseController
     ) {
         $data = null;
         try {
-            //ifelse 
             $almacenId = $request->header('ALMACEN_ID', 19);
             $clienteId = $request->header('CLIENTE_ID', 0);
             $records = $this->repository->get($id, $almacenId, $clienteId);
@@ -57,40 +47,16 @@ class ArticleController extends BaseController
         }
     }
 
-    /**
-     * Get by name
-     */
-    public function getByName(
-        Request $request,
-        $id
-    ) {
-        $data = null;
-        try {
-            //ifelse 
-            $almacenId = $request->header('ALMACEN_ID', 19);
-            $clienteId = $request->header('CLIENTE_ID', 0);
-            $records = $this->repository->get($id, $almacenId, $clienteId);
-            if (count($records)) {
-                $data = $records[0];
-            }
-            return response()->json(['nombre' => $data->NOMBRE_ARTICULO]);
-        } catch (\Throwable $th) {
-            dd($th);
-        }
-    }
-
 
     /**
      * Funcion para retornar articulos ID por like %
      */
-
     public function funDos(
         Request $request,
         $id
     ) {
         $data = null;
         try {
-            //ifelse 
             $almacenId = $request->header('ALMACEN_ID', 19);
             $clienteId = $request->header('CLIENTE_ID', 0);
             $records = $this->repository2->get($id, $almacenId, $clienteId);
@@ -105,9 +71,8 @@ class ArticleController extends BaseController
 
 
     /**
-     * Funcion para retornar articulos NOmbres por like %
+     * Funcion para retornar articulos Nombres por like %
      */
-
     public function funNom(
         Request $request,
         $nombre

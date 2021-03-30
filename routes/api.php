@@ -15,30 +15,10 @@
 
 $router->get('/monedas', 'monedaController@paging');
 
-$router->get('/ventas', 'ventaController@myfun');
+$router->get('/ventas', 'ventaController@paging');
 
-//Endopoint Regresar articulos por like %
-$router->group(['prefix' => 'articulos/clave'], function () use ($router) {
-    $router->get('/', 'articleController@paging');
-    $router->group(['prefix' => '{id}'], function () use ($router) {
-        $router->get('/', 'articleController@getById');
-    });
-});
-
-//Endopoint Regresar articulos por like %
-$router->group(['prefix' => 'articulos/nombre'], function () use ($router) {
-    $router->get('/', 'articleController@paging');
-    $router->group(['prefix' => '{nombre}'], function () use ($router) {
-        $router->get('/', 'articleController@funNom');
-    });
-});
-
-
-//Endpoint retornar Articulos por clave especifica
 $router->group(['prefix' => 'articulos'], function () use ($router) {
-    $router->get('/', 'articleController@paging');
-    $router->group(['prefix' => '{id}'], function () use ($router) {
-        $router->get('/', 'articleController@funDos');
-        $router->get('nombre', 'articleController@getByName');
-    });
+    $router->get('{id}', 'articleController@funDos');
+    $router->get('/clave/{id}', 'articleController@getById');
+    $router->get('/nombre/{nombre}', 'articleController@funNom');
 });
