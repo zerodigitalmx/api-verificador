@@ -1,19 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\v1;
+
 use App\Models\PrecioArtCliEUR;
 use App\Models\PrecioArtCliClavesUR;
 use App\Models\PrecioArtCliNombresUR;
 use Illuminate\Http\Request;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
-class Articles extends BaseController
+class ArticleController extends BaseController
 {
     protected $repository;
     protected $repository2;
     protected $repository3;
-
-
 
     public function __construct(
         PrecioArtCliClavesUR $repository,
@@ -30,10 +29,9 @@ class Articles extends BaseController
      * Paging
      */
     public function paging(
-        Request $request        
-    )
-    {
-      dd('paging');
+        Request $request
+    ) {
+        dd('paging');
     }
 
     /**
@@ -49,7 +47,7 @@ class Articles extends BaseController
             $almacenId = $request->header('ALMACEN_ID', 19);
             $clienteId = $request->header('CLIENTE_ID', 0);
             $records = $this->repository->get($id, $almacenId, $clienteId);
-            if ( count($records)){
+            if (count($records)) {
                 //Selecciona la casilla de record que desee que te traiga el responsive
                 $data = $records;
             }
@@ -72,10 +70,10 @@ class Articles extends BaseController
             $almacenId = $request->header('ALMACEN_ID', 19);
             $clienteId = $request->header('CLIENTE_ID', 0);
             $records = $this->repository->get($id, $almacenId, $clienteId);
-            if ( count($records)){
+            if (count($records)) {
                 $data = $records[0];
             }
-            return response()->json([ 'nombre' => $data->NOMBRE_ARTICULO]);
+            return response()->json(['nombre' => $data->NOMBRE_ARTICULO]);
         } catch (\Throwable $th) {
             dd($th);
         }
@@ -96,7 +94,7 @@ class Articles extends BaseController
             $almacenId = $request->header('ALMACEN_ID', 19);
             $clienteId = $request->header('CLIENTE_ID', 0);
             $records = $this->repository2->get($id, $almacenId, $clienteId);
-            if ( count($records)){
+            if (count($records)) {
                 $data = $records[0];
             }
             return response()->json($data);
@@ -104,7 +102,7 @@ class Articles extends BaseController
             dd($th);
         }
     }
-    
+
 
     /**
      * Funcion para retornar articulos NOmbres por like %
@@ -120,7 +118,7 @@ class Articles extends BaseController
             $almacenId = $request->header('ALMACEN_ID', 19);
             $clienteId = $request->header('CLIENTE_ID', 0);
             $records = $this->repository3->get($nombre, $almacenId, $clienteId);
-            if ( count($records)){
+            if (count($records)) {
                 $data = $records;
             }
             return response()->json($data);
@@ -129,5 +127,3 @@ class Articles extends BaseController
         }
     }
 }
-
-
