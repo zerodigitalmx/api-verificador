@@ -16,11 +16,10 @@ class VentaController extends BaseController
         DiarioVtasPvUR $model
     ) {
         try {
-            // TODO: renombrar correctamente los parametros de manera que sea implicita su funcionalidad
-            //  ver como se va a manejar los defaults
-            $param1 = $request->input('param1', '01.01.2020');
-            $param2 = $request->input('param2', '01.01.2021');
-            $records = $model->get($param1, $param2);
+            $records = $model->get([
+                'start' => $request->input('startDate', '01.01.2020'),
+                'end' => $request->input('endDate', '01.01.2021'),
+            ]);
             return response()->json($records);
         } catch (\Throwable $th) {
             dd($th);
