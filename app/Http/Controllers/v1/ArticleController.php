@@ -26,9 +26,9 @@ class ArticleController extends BaseController
     }
     
     /**
-     * Get by exact id 
+     * Get by like clave
      */
-    public function getById(
+    public function getLikeClave(
         Request $request,
         $id
     ) {
@@ -49,9 +49,9 @@ class ArticleController extends BaseController
 
 
     /**
-     * Funcion para retornar articulos ID por like %
+     * Funcion para retornar articulo por clave
      */
-    public function funDos(
+    public function getByClave(
         Request $request,
         $id
     ) {
@@ -73,7 +73,7 @@ class ArticleController extends BaseController
     /**
      * Funcion para retornar articulos Nombres por like %
      */
-    public function funNom(
+    public function getLikeName(
         Request $request,
         $nombre
     ) {

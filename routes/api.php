@@ -18,7 +18,7 @@ $router->get('/monedas', 'monedaController@paging');
 $router->get('/ventas', 'ventaController@paging');
 
 $router->group(['prefix' => 'articulos'], function () use ($router) {
-    $router->get('{id}', 'articleController@funDos');
-    $router->get('/clave/{id}', 'articleController@getById');
-    $router->get('/nombre/{nombre}', 'articleController@funNom');
+    $router->get('{id}', 'articleController@getByClave');
+    $router->get('/clave/{id}', 'articleController@getLikeClave');
+    $router->get('/nombre/{nombre}', 'articleController@getLikeName');
 });
