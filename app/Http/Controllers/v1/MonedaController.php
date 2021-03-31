@@ -6,8 +6,10 @@ use App\Models\Moneda;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 class MonedaController extends BaseController
-{
-    //Funcion para el endpoint Monedas 
+{    
+    /**
+     * Funcion para el endpoint Monedas  
+     */
     public function paging(
         Moneda $moneda
     ) {

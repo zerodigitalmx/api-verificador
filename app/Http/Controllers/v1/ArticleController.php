@@ -79,7 +79,6 @@ class ArticleController extends BaseController
     ) {
         $data = null;
         try {
-            //ifelse 
             $almacenId = $request->header('ALMACEN_ID', 19);
             $clienteId = $request->header('CLIENTE_ID', 0);
             $records = $this->repository3->get($nombre, $almacenId, $clienteId);

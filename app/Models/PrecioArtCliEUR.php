@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\DB;
 
 class PrecioArtCliEUR extends Model
 {
-
     protected $table = 'GET_PRECIO_ART_CLI_E_UR';
 
     public function get($clave, $almacenId, $clienteId)
