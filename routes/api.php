@@ -21,4 +21,5 @@ $router->group(['prefix' => 'articulos'], function () use ($router) {
     $router->get('{id}', 'articleController@getByClave');
     $router->get('/clave/{id}', 'articleController@getLikeClave');
     $router->get('/nombre/{nombre}', 'articleController@getLikeName');
+    $router->post('/search', 'searchController@searchLike');
 });
